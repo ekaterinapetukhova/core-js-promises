@@ -58,8 +58,10 @@ function getPromiseResult(/* source */) {
  * [Promise.resolve(1), Promise.reject(2), Promise.resolve(3)]  => Promise fulfilled with 1
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
-function getFirstResolvedPromiseResult(/* promises */) {
-  throw new Error('Not implemented');
+function getFirstResolvedPromiseResult(promises) {
+  const promise = Promise.race([promises]).then((val) => val[0]);
+
+  return promise;
 }
 
 /**
