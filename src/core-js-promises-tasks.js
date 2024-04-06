@@ -63,7 +63,7 @@ function getPromiseResult(source) {
  * [Promise.reject(1), Promise.reject(2), Promise.reject(3)]    => Promise rejected
  */
 function getFirstResolvedPromiseResult(promises) {
-  const promise = Promise.race([promises]).then((val) => val[0]);
+  const promise = Promise.any(promises);
 
   return promise;
 }
